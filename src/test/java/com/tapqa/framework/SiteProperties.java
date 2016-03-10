@@ -27,14 +27,6 @@ public final class SiteProperties implements PropertiesReader {
 		}
 	}
 
-	public void extendDefaultProperties(Properties props) {
-		this.defaultProperties.putAll(props);
-	}
-
-	public void extendEnvironmentalProperties(Properties props) {
-		this.environmentalProperties.putAll(props);
-	}
-
 	public Properties getProperties() {
 		Properties mergedProperties = new Properties();
 		mergedProperties.putAll(this.defaultProperties);
