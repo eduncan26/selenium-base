@@ -10,8 +10,8 @@ import org.openqa.selenium.WebDriver;
 abstract class BaseTest implements Test {
 
     private Driver factory;
-    private WebDriver driver;
     private SiteProperties properties;
+    protected WebDriver driver;
 
     BaseTest() {
         this.factory = new DriverFactory();

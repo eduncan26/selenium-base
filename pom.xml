@@ -59,10 +59,25 @@
   <profiles>
 
     <profile>
+      <id>all-tests</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+        <property>
+          <name>test-suite</name>
+          <value>all</value>
+        </property>
+      </activation>
+      <properties>
+        <test.groups></test.groups>
+      </properties>
+    </profile>
+
+    <profile>
       <id>regression-tests</id>
       <activation>
         <property>
-          <name>regression</name>
+          <name>test-suite</name>
+          <value>regression</value>
         </property>
       </activation>
       <properties>
@@ -71,17 +86,16 @@
     </profile>
 
     <profile>
-      <id>all-tests</id>
+      <id>smoke-tests</id>
       <activation>
-        <activeByDefault>true</activeByDefault>
         <property>
-          <name>all-tests</name>
+          <name>test-suite</name>
+          <value>smoke</value>
         </property>
       </activation>
       <properties>
-        <test.groups></test.groups>
+        <test.groups>com.tapqa.tests.suites.SmokeTestSuite</test.groups>
       </properties>
     </profile>
-
   </profiles>
 </project>

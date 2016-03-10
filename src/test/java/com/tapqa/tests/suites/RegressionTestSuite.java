@@ -9,4 +9,4 @@ import org.junit.runners.Suite.SuiteClasses;
 @RunWith(Categories.class)
 @IncludeCategory(RegressionTests.class)
 @SuiteClasses({ AppTest.class })
-public final class RegressionSuite {}
+public final class RegressionTestSuite {}

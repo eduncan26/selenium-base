@@ -17,6 +17,7 @@ public final class AppTest extends BaseTest {
 
     @Test
     public void anotherTest() {
+        this.driver.get("http://google.com");
         assertFalse(false);
     }
 }
