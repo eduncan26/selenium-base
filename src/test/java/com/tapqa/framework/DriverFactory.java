@@ -13,14 +13,8 @@ public class DriverFactory implements Driver {
 
     private WebDriver driver;
 
-    public WebDriver getDriver(String name) throws SessionNotCreatedException {
-        String targetBrowser = System.getProperty("TARGET_BROWSER");
-
-        if (targetBrowser == null) {
-            targetBrowser = name;
-        }
-
-        switch (targetBrowser) {
+    private WebDriver getWebDriver(String name) throws SessionNotCreatedException {
+        switch (name) {
             case "firefox":
                 this.driver = new FirefoxDriver();
                 break;
@@ -38,6 +32,20 @@ public class DriverFactory implements Driver {
         }
 
         return this.driver;
+    }
+
+    public WebDriver getDriver() {
+        String name = System.getProperty("TARGET_BROWSER");
+
+        if (name == null) {
+            name = "firefox";
+        }
+
+        return getWebDriver(name);
+    }
+
+    public WebDriver getDriver(String name) {
+        return getWebDriver(name);
     }
 
     public void killDriver() {

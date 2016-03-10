@@ -4,10 +4,10 @@ import java.util.Properties;
 import java.io.InputStream;
 import java.io.IOException;
 
-public final class SiteProperties implements PropertiesReader {
+public class SiteProperties implements PropertiesReader {
 	
-	private Properties defaultProperties;
-	private Properties environmentalProperties;
+	private Properties defaultProperties = new Properties();
+	private Properties environmentalProperties = new Properties();
 
 	public SiteProperties() {
 		try {
@@ -19,9 +19,9 @@ public final class SiteProperties implements PropertiesReader {
 
 			InputStream defaults = this.getClass().getClassLoader().getResourceAsStream("default.properties");
 			InputStream environment = this.getClass().getClassLoader().getResourceAsStream(environmentPropsString);
-		
-			defaultProperties.load(defaults);
-			environmentalProperties.load(environment);
+
+			this.defaultProperties.load(defaults);
+			this.environmentalProperties.load(environment);
 		} catch (IOException err) {
 			err.printStackTrace();
 		}

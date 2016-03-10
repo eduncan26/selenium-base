@@ -15,20 +15,24 @@
   </properties>
 
   <dependencies>
+
     <dependency>
       <groupId>org.seleniumhq.selenium</groupId>
       <artifactId>selenium-java</artifactId>
       <version>2.52.0</version>
     </dependency>
+
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>4.12</version>
       <scope>test</scope>
     </dependency>
+
   </dependencies>
 
   <build>
+
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -39,14 +43,45 @@
           <target>1.7</target>
         </configuration>
       </plugin>
+
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
         <version>2.18.1</version>
         <configuration>
-          <groups>com.tapqa.tests.groups.RegressionTests</groups>
+          <groups>${test.groups}</groups>
         </configuration>
       </plugin>
+
     </plugins>
   </build>
+
+  <profiles>
+
+    <profile>
+      <id>regression-tests</id>
+      <activation>
+        <property>
+          <name>regression</name>
+        </property>
+      </activation>
+      <properties>
+        <test.groups>com.tapqa.tests.suites.RegressionTests</test.groups>
+      </properties>
+    </profile>
+
+    <profile>
+      <id>all-tests</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+        <property>
+          <name>all-tests</name>
+        </property>
+      </activation>
+      <properties>
+        <test.groups></test.groups>
+      </properties>
+    </profile>
+
+  </profiles>
 </project>

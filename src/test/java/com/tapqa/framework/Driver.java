@@ -4,7 +4,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.Capabilities;
 
 public interface Driver {
-	WebDriver getDriver(String names);
+	WebDriver getDriver();
+	WebDriver getDriver(String name);
 	void killDriver();
 	Capabilities getCapabilities() throws Exception;
 }
