@@ -10,7 +10,7 @@ import org.openqa.selenium.WebDriver;
 abstract class BaseTest implements Test {
 
     private Driver factory;
-    private SiteProperties properties;
+    protected SiteProperties properties;
     protected WebDriver driver;
 
     BaseTest() {
@@ -19,11 +19,13 @@ abstract class BaseTest implements Test {
     }
 
     @Before
+    @Override
     public void setup() {
         this.driver = this.factory.getDriver();
     }
 
     @After
+    @Override
     public void teardown() {
        this.factory.killDriver();
     }
